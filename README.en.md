@@ -60,11 +60,11 @@ $ python3 -m pip install -r requirements.txt
 
 # The user can also launch the Snoop Project on the snoop command from anywhere in
 # the cli by creating an alias.  
-$ cd && printf "alias snoop='cd && cd snoop && python snoop.py'" >> .bashrc  
+$ cd && printf "alias snoop='cd && cd snoop && python snoop.py'\n" >> .bashrc && bash  
 
 # The user can also run a quick check on the database of the site he is interested in,
 # without using the 'list-all' option, using the 'snoopcheck'command
-$ cd && printf "alias snoopcheck='cd && cd snoop && printf 2 | python snoop.py --list-all | grep -i'" >> .bashrc  
+$ cd && printf "alias snoopcheck='cd && cd snoop && printf 2 | python snoop.py --list-all | grep -i'\n" >> .bashrc && bash  
 # restart Termux.
 
 # NOTE_2!: to auto-open search results in an external web-browser:  
