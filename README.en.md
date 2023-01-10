@@ -47,25 +47,26 @@ $ git clone https://github.com/snooppr/snoop -b snoop_termux
 # (if the flash drive is FAT (not ext4), in this case,
 # clone the repository only to the Termux home directory)
 
-# Enter the Snoop working directory
-$ cd ~/snoop
-# Install the 'requirements' dependencies
-$ python3 -m pip install -r requirements.txt
+# Enter the Snoop working directory  
+$ cd ~/snoop  
+# Install the 'requirements' dependencies  
+$ python3 -m pip install -r requirements.txt  
 
 # To expand the terminal output in Termux (by default, 2k lines are displayed in the CLI),  
 # for example, displaying the entire database of the option '--list-all [1/2]'  
 # add the line 'terminal-transcript-rows=10000' to the file '~/.termux/termux.properties'  
 # (the feature is available in Termux v0.114+).  
-# Restart Termux. 
+# Restart Termux.  
 
-# The user can also launch the Snoop Project on the snoop command from anywhere in
+# The user can also launch the Snoop Project on the snoop command from anywhere in  
 # the cli by creating an alias.  
 $ cd && printf "alias snoop='cd && cd snoop && python snoop.py'\n" >> .bashrc && bash  
 
-# The user can also run a quick check on the database of the site he is interested in,
-# without using the 'list-all' option, using the 'snoopcheck'command
+# The user can also run a quick check on the database of the site he is interested in,  
+# without using the 'list-all' option, using the 'snoopcheck'command  
 $ cd && printf "alias snoopcheck='cd && cd snoop && printf 2 | python snoop.py --list-all | grep -i'\n" >> .bashrc && bash  
-# restart Termux.
+# restart Termux.  
+# At the end of the search work snoop on the request to select "with which to open the search results" select the default / system HTMLviewer.  
 
 # NOTE_2!: to auto-open search results in an external web-browser:  
 $ cd && pkg install termux-tools; echo 'allow-external-apps=true' >>.termux/termux.properties  
