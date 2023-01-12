@@ -146,7 +146,6 @@ search arguments:
                         Set the user-agent manually, the agent is enclosed in 
                         quotes, by default a random or overridden user-agent
                         from the snoop database is set for each site.
-                        https://юзерагент.рф/
   --normal-mode, -N     Mode switch: SNOOPninja> normal mode> SNOOPninja. 
                         By_default (GNU/Linux Full Version) on 
                         'SNOOPninja mode': search acceleration ~ 25pct,
@@ -155,11 +154,6 @@ search arguments:
                         Snoop for GNU/Linux Full Version. The default
                         (on Windows) is 'normal mode'. 
                         In Demo Version, the mode switch is deactivated
-  --quick-mode , -q     Quiet search mode on. Intermediate
-                        the results are not printed. Repeated flexible
-                        connections on faulty resources without slowing down
-                        the software. The most advanced search mode 
-                        (in development - not use)
 ```
 
 **Example**
