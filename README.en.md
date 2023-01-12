@@ -122,7 +122,7 @@ search arguments:
                         Include only the selected region in the search,
                         it is permissible to use the '-o' option several times,
                         for example, '-o US -o UA' search for USA and Ukraine
-  --country, -c         Sort 'print/record_results' by country,
+  --country-sort, -c    Sort 'print/record_results' by country,
                         not alphabetically
   --time-out , -t <digit> 
                         Set maximum time allocation for waiting for a response 
@@ -189,7 +189,7 @@ $ python3 snoop.py -c -t 9 -f -S -u ~/file.txt -w
 
 # 'ctrl-c' — abort search
 ```
-Found accounts will be stored in '~/snoop/results/nicknames/*/username. {Txt.csv.html}'.  
+Found accounts will be stored in '~/snoop/results/nicknames/*/username.{txt.csv.html}'.  
 csv open in *office, field separator **comma**.    
 
 Destroy **all** search results - delete the directory '~/snoop/results'.
@@ -197,7 +197,7 @@ or ```python snoop.py --autoclean```
 
 ```
 # Update Snoop to test new software features:
-$ python3 snoop.py --update y #requires a Git installation.
+$ python3 snoop.py --update #requires a Git installation.
 ```
 
 **An example snoop for android**  
