@@ -105,10 +105,8 @@ search arguments:
                         are enclosed in quotation marks
   --verbose, -v         When searching for 'username', print detailed
                         verbalization
-  --base , -b <path>    Specify another database for search for 'username'
-                        (Local)/In demo version the function is disabled
   --web-base, -w        Connect to search for 'username' to the updated web_DB
-                        (Online)/In demo version the function is disabled
+                        (2600+ websites). In demo version the function is disabled
   --site , -s <site_name> 
                         Specify the name of the site from the database 
                         '--list-all'. Search for 'username' on one specified
@@ -140,10 +138,10 @@ search arguments:
                         Example: 'python snoop.py -u
                         /storage/emulated/0/Download/listusers.txt'
   --save-page, -S       Save found user pages to local files
-  --cert-off, -C        Disable verification of certificates on servers. 
-                        By default, server certificate checking is enabled on
-                        Snoop for Android, which improves search speed, 
-                        but may result in higher percentages of false positives
+  --cert-on, -C         Enable verification of certificates on servers.
+                        By default, certificate verification on servers is
+                        disabled, which gives fewer errors and more results
+                        when searching for nickname
   --headers , -H <name> 
                         Set the user-agent manually, the agent is enclosed in 
                         quotes, by default a random or overridden user-agent
