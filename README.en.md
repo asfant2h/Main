@@ -128,9 +128,7 @@ search arguments:
                         Set maximum time allocation for waiting for a response 
                         from the server (seconds). Affects the search duration.
                         Affects 'Timeout errors:' On. this option is necessary
-                        with a slow Internet connection to avoid long freezes
-                        in case of network problems
-                        (by default, the value is set to 5s)
+                        with a slow Internet connection (by default 9s)
   --found-print, -f     Print only found accounts
   --no-func, -n         ✓Monochrome terminal, do not use colors in url 
                         ✓Disable sound ✓Disable opening web browser
@@ -205,4 +203,4 @@ $ python3 snoop.py --update #requires a Git installation.
   <img src="https://raw.githubusercontent.com/snooppr/snoop/master/images/Android%20snoop_run.gif" width="40%" />  
 </p>  
 
- • **January 27 2022 compress the repository / if you have problems, do a 'git clone' again**
+ • **January 27 2022 compress the repository/if you have problems, do a 'git clone' again**
