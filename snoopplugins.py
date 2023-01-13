@@ -428,7 +428,7 @@ def module1():
         table_name = "Мой ip" if dip == "" else dip
 
         if '.' not in dip and ':' not in dip and dip != "" or (dip != "" and len(dip) <= 4) or '..' in dip:
-            print(Style.BRIGHT + Fore.RED + "└──Неверный ввод \n\nвыход" + Style.RESET_ALL)
+            print(Style.BRIGHT + Fore.RED + "└──Неверный ввод\n" + Style.RESET_ALL)
             module1()
         else:
             u = urlparse(dip).hostname
