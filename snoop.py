@@ -739,7 +739,7 @@ def license_snoop():
         else:
             wl = 4
         cop = copyright.read().replace("\ufeffSnoop", "Snoop")
-        cop = cop.replace('='*80, "="*(os.get_terminal_size()[0]-4)).strip()
+        cop = cop.replace('=' * 80, "~" * (os.get_terminal_size()[0] - 4)).strip()
         console.print(Panel(cop, title='[bold white]COPYRIGHT[/bold white]', style=STL(color="white", bgcolor="blue")))
 
     if not Android:
