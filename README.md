@@ -80,6 +80,8 @@ $ cd && pkg install termux-tools; echo 'allow-external-apps=true' >>.termux/term
 
 ## Using
 ```
+$ python snoop.py --help
+
 Справка
 
 optional arguments:
@@ -188,7 +190,7 @@ $ python3 snoop.py -с -t 9 -f -S -u ~/file.txt -w
 ```
 **'ctrl + c'** — прервать поиск (остановить корректно ПО).  
 
-Найденные учетные записи будут храниться в '~/snoop/results/nicknames/*/username.{txt.csv.html}'.  
+Найденные учетные записи будут храниться в '/storage/emulated/0/snoop/results/nicknames/*{txt|csv|html}'.  
 csv открывать в *office, разделитель полей **запятая**.  
 
 Уничтожить **все** результаты поиска — удалить каталог '~/snoop/results'.  
