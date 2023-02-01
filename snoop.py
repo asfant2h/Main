@@ -544,7 +544,7 @@ def snoop(username, BDdemo_new, verbose=False, norm=False, reports=False, user=F
                     sys.exit()
 #                print(r.text) #проверка ответа (+- '-S')
 #                print(r.status_code) #Проверка ответа
-                if error2 in r.text or error in r.text or error3 in r.text:
+                if r.status_code > 200 or (error2 in r.text or error in r.text or error3 in r.text):
                     if not print_found_only:
                         print_not_found(websites_names, verbose, color)
                     exists = "увы"
@@ -1596,8 +1596,11 @@ function sortList() {
                             print(install_service)
                 except Exception:
                     print(f"\n\033[31;1mНе удалось открыть результаты\033[0m")
+        try:
+            hardware.shutdown()
+        except Exception:
+            pass
 
-        hardware.shutdown()
 ## поиск по выбранным пользователям.
     starts(args.username) if args.user is False else starts(USERLIST)
 
