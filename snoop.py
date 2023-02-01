@@ -67,7 +67,7 @@ init(autoreset=True)
 console = Console()
 
 
-vers, vers_code, demo_full = 'v1.3.6b', "s", "d"
+vers, vers_code, demo_full = 'v1.3.6c', "s", "d"
 
 print(f"""\033[36m
   ___|
@@ -186,7 +186,7 @@ def print_error(websites_names, errstr, country_code, errX, verbose=False, color
         print(f"{Style.RESET_ALL}{Fore.RED}[{Style.BRIGHT}{Fore.RED}-{Style.RESET_ALL}{Fore.RED}]{Style.BRIGHT}" \
               f"{Fore.GREEN} {websites_names}: {Style.BRIGHT}{Fore.RED}{errstr}{country_code}{Fore.YELLOW} {errX if verbose else ''}")
         try:
-            playsound('err.wav')
+            if vers_code == 's': playsound('err.wav')
         except Exception:
             pass
     else:
@@ -232,22 +232,21 @@ def request_res(request_future, error_type, websites_names, timeout=None,
     # verbose=True
     global censors_timeout, censors
     try:
-        res = request_future.result(timeout=timeout + 5)
+        res = request_future.result(timeout=timeout + 4)
         if res.status_code:
             return res, error_type, res.elapsed
-    except requests.exceptions.SSLError as err0:
-        if print_found_only is False:
-            print_error(websites_names, "Censorship | SSL", country_code, err0, verbose, color)
-            censors_timeout += 1
     except requests.exceptions.HTTPError as err1:
         if print_found_only is False:
             print_error(websites_names, "HTTP Error", country_code, err1, verbose, color)
     except requests.exceptions.ConnectionError as err2:
         censors += 1
-        if print_found_only is False:
-            print_error(websites_names, "Ошибка соединения", country_code, err2, verbose, color)
-        if 'aborted' in str(err2) or 'None: None' in str(err2):
+        if 'aborted' in str(err2) or 'None: None' in str(err2) or "SSLZeroReturnError" in str(err2):
+            if print_found_only is False:
+                print_error(websites_names, "Ошибка соединения", country_code, err2, verbose, color)
             return "FakeNone", "", -1
+        else:
+            if print_found_only is False:
+                print_error(websites_names, "Censorship | SSL", country_code, err2, verbose, color)
     except (requests.exceptions.Timeout, TimeoutError) as err3:
         censors_timeout += 1
         if print_found_only is False:
@@ -348,19 +347,20 @@ def snoop(username, BDdemo_new, verbose=False, norm=False, reports=False, user=F
     nick = username.replace("%20", " ")  #username 2-переменные (args/info)
 
 ## Создать многопоточный/процессный сеанс для всех запросов.
-    requests.packages.urllib3.disable_warnings()  #блокировка предупреждений о сертификате
+    requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS += ':HIGH:!DH:!aNULL'
+    requests.packages.urllib3.disable_warnings()
     requests_future = requests.Session()
     requests_future.verify = False if cert is False else True
 
     if Android:  #android
-        tread__ = len(BDdemo_new) if len(BDdemo_new) < 10 else 10
+        tread__ = len(BDdemo_new) if len(BDdemo_new) < 8 else 8
         executor1 = ThreadPoolExecutor(max_workers=tread__)
     elif sys.platform == 'win32':  #windows
-        tread__ = len(BDdemo_new) if len(BDdemo_new) < 14 else 14
+        tread__ = len(BDdemo_new) if len(BDdemo_new) < 12 else 12
         executor1 = ThreadPoolExecutor(max_workers=tread__)
     elif sys.platform != 'win32':  #linux
         if norm is False:
-            proc_ = len(BDdemo_new) if len(BDdemo_new) < 26 else 26
+            proc_ = len(BDdemo_new) if len(BDdemo_new) < 25 else 25
             executor1 = ProcessPoolExecutor(max_workers=proc_)
         else:
             tread__ = len(BDdemo_new) if len(BDdemo_new) < 16 else 16

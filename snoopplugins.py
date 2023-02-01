@@ -23,8 +23,7 @@ import webbrowser
 
 from collections import Counter
 from colorama import Fore, Style, init
-from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
-from requests.adapters import HTTPAdapter
+from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor, TimeoutError
 from rich.console import Console
 from rich.progress import track, BarColumn, TimeRemainingColumn, SpinnerColumn, TimeElapsedColumn, Progress
 from rich.table import Table
