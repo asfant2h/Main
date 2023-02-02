@@ -67,7 +67,7 @@ init(autoreset=True)
 console = Console()
 
 
-vers, vers_code, demo_full = 'v1.3.6c', "s", "d"
+vers, vers_code, demo_full = 'v1.3.6d', "s", "d"
 
 print(f"""\033[36m
   ___|
@@ -376,15 +376,12 @@ def snoop(username, BDdemo_new, verbose=False, norm=False, reports=False, user=F
 ## Создание futures на все запросы. Это позволит распараллелить запросы с прерываниями.
     for websites_names, param_websites in BDdemo_new.items():
         results_site = {}
-
-        param_websites.pop('usernameON', None)
-        param_websites.pop('usernameOFF', None)
-        param_websites.pop('comments', None)
-
-# Запись URL основного сайта и флага страны (сопоставление в БД).
+        # param_websites.pop('comments', None)
+        # Запись URL основного сайта и флага страны (сопоставление в БД).
         results_site['flagcountry'] = param_websites.get("country")
         results_site['flagcountryklas'] = param_websites.get("country_klas")
         results_site['url_main'] = param_websites.get("urlMain")
+        # username = param_websites.get("usernameON")
 
 # Пользовательский user-agent браузера (рандомно на каждый сайт), а при сбое — постоянный с расширенным заголовком.
         majR = random.choice(range(97, 107, 1))
@@ -506,16 +503,15 @@ def snoop(username, BDdemo_new, verbose=False, norm=False, reports=False, user=F
                                                        print_found_only=print_found_only, verbose=verbose,
                                                        color=color, timeout=timeout, country_code=f" ~{country_code}")
 
-# Повторное сбойное соединение через новую сессию быстрее, чем через adapter - timeout*2=дольше.
+# Повторное сбойное соединение через новую сессию быстрее, чем через adapter.
             if norm is False and quickly is False and r == "FakeNone":
-                #print(future)
+                global recensor
                 head_duble = {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
                               'Accept-Language': 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3',
                               'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)' + \
                                             'Chrome/76.0.3809.100 Safari/537.36'}
 
                 for _ in range(3):
-                    global recensor
                     recensor += 1
                     future_rec = executor3.submit(requests_future.get, url=url, headers=head_duble,
                                                   allow_redirects=allow_redirects, timeout=2.9)
@@ -537,9 +533,14 @@ def snoop(username, BDdemo_new, verbose=False, norm=False, reports=False, user=F
 ## Проверка, 4 методов; #1.
 # Ответы message (разные локации).
             if error_type == "message":
+                try:
+                    if param_websites.get("encoding") is not None: r.encoding = param_websites.get("encoding")
+                except Exception:
+                    console.log("[bold red]err!: проверить кодировку/оповестить разработчика\nВыход")
+                    sys.exit()
                 error = param_websites.get("errorMsg")
                 error2 = param_websites.get("errоrMsg2")
-                error3 = param_websites.get("errorMsg3") if param_websites.get("errorMsg3") is not None else "NoneNoneNone"
+                error3 = param_websites.get("errorMsg3") if param_websites.get("errorMsg3") is not None else "FakeNoneNoneNone"
                 if param_websites.get("errorMsg2"):
                     sys.exit()
 #                print(r.text) #проверка ответа (+- '-S')
@@ -701,29 +702,44 @@ def update_snoop():
     upd = input()
 
     if upd == "y":
-        print(Fore.CYAN + "Функция обновления Snoop требует установки < Git >")
-        os.startfile("update.bat") if sys.platform == 'win32' else os.system("./update.sh")
+        with console.status("[cyan]работаю\n" + \
+                            "Функция обновления Snoop требует установки утилиты < Git >[/cyan]", spinner="arrow3"):
+            time.sleep(1)
+            os.startfile("update.bat") if sys.platform == 'win32' else os.system("./update.sh")
     print(Style.BRIGHT + Fore.RED + "\nВыход")
     sys.exit()
 
 
 ## Удаление отчетов.
 def autoclean():
-# Определение директорий.
-    path_build_del = "/results" if sys.platform != 'win32' else "\\results"
-    rm = dirpath + path_build_del
-# Подсчет файлов и размера удаляемого каталога 'results'.
-    total_size = 0
-    delfiles = []
-    for total_file in glob.iglob(rm + '/**/*', recursive=True):
-        total_size += os.path.getsize(total_file)
-        if os.path.isfile(total_file): delfiles.append(total_file)
+    print("""
+\033[36mВы действительно хотите:\033[0m \033[31;1m
+               _                _  
+ _| _ |  _.|| |_) _ ._  _ .-_|_  ) 
+(_|(/_| (_||| | \(/_|_)(_)|  |_ o  
+                    |                      \033[0m
+\033[36mВыберите действие:\033[0m [y/n] """, end='')
+
+    del_all = input()
+
+    if del_all == "y":
+        try:
+            # Определение директорий.
+            path_build_del = "/results" if sys.platform != 'win32' else "\\results"
+            rm = dirpath + path_build_del
+            # Подсчет файлов и размера удаляемого каталога 'results'.
+            total_size = 0
+            delfiles = []
+            for total_file in glob.iglob(rm + '/**/*', recursive=True):
+                total_size += os.path.getsize(total_file)
+                if os.path.isfile(total_file): delfiles.append(total_file)
 # Удаление каталога 'results'.
-    try:
-        shutil.rmtree(rm, ignore_errors=True)
-        print(f"\033[31;1mdeleted --> {rm}\033[0m\033[36m {len(delfiles)} files, {round(total_size/1024/1024, 2)} Mb\033[0m")
-    except Exception:
-        console.log("[red]Ошибка")
+            shutil.rmtree(rm, ignore_errors=True)
+            print(f"\n\033[31;1mdeleted --> {rm}\033[0m\033[36m {len(delfiles)} files, {round(total_size/1024/1024, 2)} Mb\033[0m")
+        except Exception:
+            console.log("[red]Ошибка")
+    else:
+        print(Style.BRIGHT + Fore.RED + "\nВыход")
     sys.exit()
 
 
