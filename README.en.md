@@ -44,14 +44,14 @@ $ pip install --upgrade pip
 
 # Clone the repository
 $ git clone https://github.com/snooppr/snoop -b snoop_termux
-# (if the flash drive is FAT (not ext4), in this case,
-# clone the repository only to the Termux home directory)
 
 # Enter the Snoop working directory  
 $ cd ~/snoop  
 # Install the 'requirements' dependencies  
 $ python3 -m pip install -r requirements.txt  
 
+
+# Optional↓
 # To expand the terminal output in Termux (by default, 2k lines are displayed in the CLI),  
 # for example, displaying the entire database of the option '--list-all [1/2]'  
 # add the line 'terminal-transcript-rows=10000' to the file '~/.termux/termux.properties'  

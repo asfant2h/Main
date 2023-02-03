@@ -44,14 +44,14 @@ $ pip install --upgrade pip
 
 # Клонировать репозиторий
 $ git clone https://github.com/snooppr/snoop -b snoop_termux
-# (если флешкa FAT (ни ext4), в таком случае,
-# клонировать репозиторий только в домашнюю директорию Termux)
 
 # Войти в рабочий каталог Snoop
 $ cd ~/snoop
 # Установить зависимости 'requirements'
 $ python3 -m pip install -r requirements.txt
 
+
+# Опционально↓
 # Чтобы расширить вывод терминала в Termux (по умолчанию 2к строк отображение в CLI), например, 
 # отображение всей БД опции '--list-all [1/2]'
 # добавить строку 'terminal-transcript-rows=10000' в файл '~/.termux/termux.properties'
