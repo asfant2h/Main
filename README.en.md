@@ -71,7 +71,8 @@ $ cd && printf "alias snoopcheck='cd && cd snoop && printf 2 | python snoop.py -
 # NOTE_2!: to auto-open search results in an external web-browser:  
 $ cd && pkg install termux-tools; echo 'allow-external-apps=true' >>.termux/termux.properties  
 ```
-NOTE_3!: if your Android is flawed (that is, 12+) and breaks Termux, read the instructions for solving the problem [here](https://github.com/agnostic-apollo/Android-Docs/blob/master/en/docs/apps/processes/phantom-cached-and-empty-processes.md#how-to-disable-the-phantom-processes-killing).
+NOTE_3!: if your Android is flawed (that is, 12+) and breaks Termux, read the instructions for solving the problem [here](https://github.com/agnostic-apollo/Android-Docs/blob/master/en/docs/apps/processes/phantom-cached-and-empty-processes.md#how-to-disable-the-phantom-processes-killing).  
+NOTE_4!: old patched python versions 3.7-3.10 from are supported [termux_tur repo](https://github.com/termux-user-repository/tur/tree/master/tur).  
 <p align="center">  
   <img src="https://raw.githubusercontent.com/snooppr/snoop/master/images/snoop_alias.gif" width="40%" />  
 </p>  
