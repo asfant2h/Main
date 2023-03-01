@@ -119,10 +119,10 @@ search arguments:
                         Exclude the selected region from the search,
                         it is permissible to use the '-e' option several times,
                         for example, '-e RU -e WR' exclude Russia and World from search
-  --one-level , -o <country_code> 
+  --include , -o <country_code> 
                         Include only the selected region in the search,
-                        it is permissible to use the '-o' option several times,
-                        for example, '-o US -o UA' search for USA and Ukraine
+                        it is permissible to use the '-i' option several times,
+                        for example, '-i US -i UA' search for USA and Ukraine
   --country-sort, -c    Print and record_results' by country,
                         not alphabetically
   --time-out , -t <digit> 
@@ -136,7 +136,7 @@ search arguments:
                         ✓Disable printing of country flags 
                         ✓Disable indication and progress status. 
                         Saves system resources and speeds up searches
-  --userlist , -u <path> 
+  --userlist , -u <file> 
                         Specify a file with a list of users.
                         Example: 'python snoop.py -u
                         /storage/emulated/0/Download/listusers.txt'
@@ -145,7 +145,7 @@ search arguments:
                         By default, certificate verification on servers is
                         disabled, which gives fewer errors and more results
                         when searching for nickname
-  --headers , -H <name> 
+  --headers , -H <User-Agent> 
                         Set the user-agent manually, the agent is enclosed in 
                         quotes, by default a random or overridden user-agent
                         from the snoop database is set for each site.
