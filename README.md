@@ -59,11 +59,11 @@ $ python3 -m pip install -r requirements.txt
 # Перезапустить Termux.  
 
 # Пользователь также может запустить snoop по команде 'snoop' из любого места в CLI, создав alias.  
-$ cd && printf "alias snoop='cd && cd snoop && python snoop.py'\n" >> .bashrc && bash  
+$ cd && echo "alias snoop='cd && cd snoop && python snoop.py'" >> .bashrc && bash  
 
 # Пользователь также может выполнить быструю проверку интересующего его сайта по БД,  
 # не используя опцию "--list-all", используя команду "snoopcheck"  
-$ cd && printf "alias snoopcheck='cd && cd snoop && printf 2 | python snoop.py --list-all | grep -i'\n" >> .bashrc && bash  
+$ cd && echo "alias snoopcheck='cd && cd snoop && echo 2 | python snoop.py --list-all | grep -i'" >> .bashrc && bash  
 
 # ПРИМЕЧАНИЕ_2!: Snoop довольно умён и может автоматически открывать результаты поиска во внешнем веб-браузере:  
 $ cd && pkg install termux-tools; echo 'allow-external-apps=true' >>.termux/termux.properties  
