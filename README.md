@@ -73,7 +73,7 @@ $ cd && pkg install termux-tools; echo 'allow-external-apps=true' >>.termux/term
 # ПРИМЕЧАНИЕ_3!: после отключения РФ от Лондонской точки обмена интернет-трафиком скорость поиска Snoop
 # (возможно и у других поставщиков связи) на мобильных операторах Мегафон/Yota упала в ~2 раза.
 ```
-ПРИМЕЧАНИЕ_4!: если ваш Android ущербный (то есть 12+) и ломает Termux, читайте инструкцию по решению проблемы [здесь](https://github.com/agnostic-apollo/Android-Docs/blob/master/en/docs/apps/processes/phantom-cached-and-empty-processes.md#how-to-disable-the-phantom-processes-killing).  
+ПРИМЕЧАНИЕ_4!: если у пользователя Android ущербный (то есть 12+) и ломает Termux, читайте инструкцию по решению проблемы [здесь](https://github.com/agnostic-apollo/Android-Docs/blob/master/en/docs/apps/processes/phantom-cached-and-empty-processes.md#how-to-disable-the-phantom-processes-killing).  
 ПРИМЕЧАНИЕ_5!: поддерживаются старые пропатченные python версии 3.7-3.10 из [termux_tur repo](https://github.com/termux-user-repository/tur/tree/master/tur).  
 
 <p align="center">  
@@ -112,7 +112,7 @@ search arguments:
   --verbose, -v         Во время поиска 'nickname' выводить на печать
                         подробную вербализацию
   --web-base, -w        Подключиться для поиска 'nickname' к
-                        динамично-обновляемой web_БД (2600+ сайтов). В demo
+                        динамично-обновляемой web_БД (2700+ сайтов). В demo
                         version функция отключена
   --site , -s <site_name> 
                         Указать имя сайта из БД '--list-all'. Поиск
