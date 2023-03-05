@@ -23,6 +23,16 @@ init(autoreset=True)
 console = Console()
 
 
+## Логирование ошибок.
+def err_all(err_= "low"):
+    if err_ == "high":
+        err_log = ("⚠️ [bold red][RU] Внимание! Критическая ошибка, просьба сообщить об этом разработчику.\n" + \
+                   "[EN] Attention! Critical error, please report it to the developer.\nhttps://github.com/snooppr/snoop/issues[/bold red]")
+    elif err_ == "low":
+        err_log = ("⚠️ [bold yellow][RU] Ошибка | [EN] Error[/bold yellow]")
+    return err_log
+
+
 ## БД.
 def DB(db_base):
     try:
