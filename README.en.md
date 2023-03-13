@@ -80,6 +80,10 @@ NOTE_4!: old patched python versions 3.7-3.10 from are supported [termux_tur rep
 
 ## Using
 ```
+usage: snoop_cli [search arguments...] nickname
+or
+usage: snoop_cli [service arguments | plugins arguments]
+
 $ python snoop.py --help
 
 Help

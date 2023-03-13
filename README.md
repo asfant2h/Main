@@ -83,6 +83,10 @@ $ cd && pkg install termux-tools; echo 'allow-external-apps=true' >>.termux/term
 
 ## Using
 ```
+usage: snoop_cli [search arguments...] nickname
+or
+usage: snoop_cli [service arguments | plugins arguments]
+
 $ python snoop.py --help
 
 Справка
